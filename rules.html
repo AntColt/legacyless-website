@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Legacyless Rules | Safe C++ Modernization Ruleset</title>
-  <meta name="description" content="Browse the current Legacyless ruleset for safe, deterministic, explainable C++ modernization.">
-  <meta name="theme-color" content="#0b1220">
+  <title>Legacyless Rules | Current transformations</title>
+  <meta name="description" content="Browse the current Legacyless rules for safe, deterministic, explainable C++ modernization.">
+  <meta name="theme-color" content="#0b0b0b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page-rules">
+<body>
   <div class="site-shell">
     <header class="site-header">
-      <div class="container header-row">
+      <div class="container nav-row">
         <a class="brand" href="index.html" aria-label="Legacyless home">
           <span class="brand-mark">L</span>
           <span>Legacyless</span>
@@ -25,66 +25,45 @@
           <a href="help.html">Help</a>
           <a href="contact.html">Contact</a>
         </nav>
-        <a class="button button-small button-ghost" href="https://github.com/your-org/legacyless/releases/latest">Download Beta</a>
+        <a class="button button-primary button-small" href="https://github.com/your-org/legacyless/releases/latest">Download Beta</a>
       </div>
     </header>
 
     <main>
-      <section class="page-intro section">
-        <div class="container intro-grid">
-          <div>
-            <p class="eyebrow">Rules</p>
-            <h1>Small, reviewable rules with clear intent.</h1>
-            <p class="lead">
-              The current Legacyless ruleset is intentionally narrow. Each rule is meant to be practical, conservative,
-              and easy for developers to understand before it earns a place in an automated workflow.
-            </p>
-          </div>
-          <aside class="card catalog-card">
-            <p class="eyebrow">Current catalog</p>
-            <h2>Two foundational rules</h2>
-            <ul class="bullet-list">
-              <li><code>nullptr</code> modernization for legacy null pointer constants</li>
-              <li>Missing <code>override</code> annotation where override semantics already exist</li>
-            </ul>
-            <p class="subtle-copy">
-              This tight scope is deliberate. Legacyless grows rule-by-rule, with testing and feedback guiding what
-              should be automated next.
-            </p>
-          </aside>
+      <section class="page-hero section">
+        <div class="container page-hero-inner">
+          <p class="eyebrow">Rules</p>
+          <h1>Current transformations.</h1>
+          <p class="page-copy">Small, reviewable rules for modern C++ cleanup.</p>
         </div>
       </section>
 
       <section class="section">
-        <div class="container rules-layout">
-          <nav class="rule-nav" aria-label="Rule navigation">
-            <a href="#nullptr-rule">nullptr modernization</a>
-            <a href="#override-rule">missing override</a>
-            <a href="help.html">How to try the beta</a>
-            <a href="contact.html">Share feedback</a>
-          </nav>
+        <div class="container">
+          <div class="tabs-shell" data-tabs>
+            <div class="tab-list" role="tablist" aria-label="Legacyless rules">
+              <button class="tab-button is-active" id="tab-nullptr" type="button" role="tab" aria-selected="true" aria-controls="panel-nullptr" data-tab-target="nullptr">nullptr</button>
+              <button class="tab-button" id="tab-override" type="button" role="tab" aria-selected="false" aria-controls="panel-override" data-tab-target="override">override</button>
+            </div>
 
-          <div class="rule-stack">
-            <article class="card rule-panel" id="nullptr-rule">
-              <div class="tag-row">
-                <span class="tag">Rule 01</span>
-                <span class="tag tag-subtle">nullptr modernization</span>
+            <section class="tab-panel is-active" id="panel-nullptr" role="tabpanel" aria-labelledby="tab-nullptr" data-tab-panel="nullptr">
+              <div class="tab-panel-head">
+                <div>
+                  <p class="rule-kicker">Rule 01</p>
+                  <h2>nullptr modernization</h2>
+                </div>
+                <span class="pill">safe current rule</span>
               </div>
-              <h2>Replace legacy null pointer constants with <code>nullptr</code></h2>
-              <p class="rule-summary">
-                Human-friendly description: when code is expressing a null pointer, Legacyless can rewrite the older
-                spelling to the modern, explicit form.
-              </p>
-
-              <div class="compare-grid compare-grid-wide">
-                <div class="code-card">
+              <p class="tab-copy">Replaces legacy null pointer constants when Legacyless can confirm pointer intent.</p>
+              <div class="split-code">
+                <div>
                   <p class="code-label">Before</p>
                   <pre><code>Connection* current = NULL;
 if (current == 0) {
   reconnect(current);
 }</code></pre>
                 </div>
-                <div class="code-card">
+                <div>
                   <p class="code-label">After</p>
                   <pre><code>Connection* current = nullptr;
 if (current == nullptr) {
@@ -92,130 +71,70 @@ if (current == nullptr) {
 }</code></pre>
                 </div>
               </div>
-
-              <div class="detail-grid">
-                <article class="detail-card">
-                  <h3>Short explanation</h3>
-                  <p>
-                    <code>nullptr</code> communicates pointer intent directly and avoids the historical ambiguity of
-                    <code>NULL</code> and plain <code>0</code>.
-                  </p>
+              <div class="mini-grid">
+                <article class="mini-card">
+                  <p class="mini-label">What it does</p>
+                  <p>Moves null pointer spelling to the modern, explicit form.</p>
                 </article>
-                <article class="detail-card">
-                  <h3>Why it is safe</h3>
-                  <p>
-                    The rule is only appropriate when Legacyless can determine the token is being used as a null pointer
-                    constant in pointer context. It is not about broad replacement of every zero literal.
-                  </p>
-                </article>
-                <article class="detail-card">
-                  <h3>Why developers like it</h3>
-                  <p>
-                    The change is small, visible in a diff, and aligns with modern C++ style without changing the
-                    surrounding design or control flow.
-                  </p>
+                <article class="mini-card">
+                  <p class="mini-label">Why safe</p>
+                  <p>Applied only when null pointer context is clear, not as a blind text replacement.</p>
                 </article>
               </div>
-            </article>
+            </section>
 
-            <article class="card rule-panel" id="override-rule">
-              <div class="tag-row">
-                <span class="tag">Rule 02</span>
-                <span class="tag tag-subtle">missing override</span>
+            <section class="tab-panel" id="panel-override" role="tabpanel" aria-labelledby="tab-override" data-tab-panel="override" hidden>
+              <div class="tab-panel-head">
+                <div>
+                  <p class="rule-kicker">Rule 02</p>
+                  <h2>missing override</h2>
+                </div>
+                <span class="pill">safe current rule</span>
               </div>
-              <h2>Add missing <code>override</code> where override behavior already exists</h2>
-              <p class="rule-summary">
-                Human-friendly description: if a derived member function is already overriding a base virtual function,
-                Legacyless can mark that intent explicitly.
-              </p>
-
-              <div class="compare-grid compare-grid-wide">
-                <div class="code-card">
+              <p class="tab-copy">Adds <code>override</code> when a derived function is already overriding a virtual base declaration.</p>
+              <div class="split-code">
+                <div>
                   <p class="code-label">Before</p>
                   <pre><code>struct Writer : BaseWriter {
   void flush();
 };</code></pre>
                 </div>
-                <div class="code-card">
+                <div>
                   <p class="code-label">After</p>
                   <pre><code>struct Writer : BaseWriter {
   void flush() override;
 };</code></pre>
                 </div>
               </div>
-
-              <div class="detail-grid">
-                <article class="detail-card">
-                  <h3>Short explanation</h3>
-                  <p>
-                    The rule adds the missing annotation for a function that is already acting as an override according
-                    to the type system.
-                  </p>
+              <div class="mini-grid">
+                <article class="mini-card">
+                  <p class="mini-label">What it does</p>
+                  <p>Makes existing polymorphic intent explicit and easier to review.</p>
                 </article>
-                <article class="detail-card">
-                  <h3>Why it is safe</h3>
-                  <p>
-                    Adding <code>override</code> does not create new runtime behavior. It makes existing intent
-                    explicit and lets the compiler diagnose mismatches earlier if the hierarchy changes later.
-                  </p>
-                </article>
-                <article class="detail-card">
-                  <h3>Why developers like it</h3>
-                  <p>
-                    Reviewers can understand the change instantly, and the code becomes clearer about which member
-                    functions are meant to participate in polymorphism.
-                  </p>
+                <article class="mini-card">
+                  <p class="mini-label">Why safe</p>
+                  <p>No new runtime behavior. It clarifies behavior the type system already has.</p>
                 </article>
               </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="cta-band">
-            <div>
-              <p class="eyebrow">Next step</p>
-              <h2>Run the beta on a real project.</h2>
-              <p>
-                The best way to evaluate these rules is to preview them on production-adjacent code, inspect the diffs,
-                and decide whether the output earns a place in your workflow.
-              </p>
-            </div>
-            <div class="cta-actions">
-              <a class="button button-primary" href="help.html">Open help</a>
-              <a class="button button-secondary" href="contact.html">Send feedback</a>
-            </div>
+            </section>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand brand-footer" href="index.html">
-            <span class="brand-mark">L</span>
-            <span>Legacyless</span>
-          </a>
-          <p class="footer-note">
-            Safe, deterministic, explainable C++ modernization for teams that want modern code without opaque rewrites.
-          </p>
-        </div>
-        <nav class="footer-links" aria-label="Footer">
+      <div class="container footer-row">
+        <p>Legacyless</p>
+        <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="rules.html">Rules</a>
           <a href="help.html">Help</a>
           <a href="contact.html">Contact</a>
-        </nav>
-        <div class="footer-links">
-          <a href="https://github.com/your-org/legacyless/releases/latest">Beta download</a>
-          <a href="https://github.com/your-org/legacyless/issues">Issue tracker</a>
-          <a href="mailto:beta@legacyless.dev">beta@legacyless.dev</a>
         </div>
       </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
