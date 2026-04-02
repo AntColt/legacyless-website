@@ -3,13 +3,286 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Legacyless</title>
+  <title>Legacyless | Safe, Deterministic C++ Modernization</title>
+  <meta name="description" content="Legacyless modernizes C++ with safe, deterministic, explainable C++ transformations built for developer trust.">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <main>
-    <h1>Legacyless</h1>
-    <p>Safe, deterministic C++ modernization.</p>
-  </main>
+<body class="page-home">
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="index.html" aria-label="Legacyless home">
+          <span class="brand-mark">L</span>
+          <span>Legacyless</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a aria-current="page" href="index.html">Home</a>
+          <a href="rules.html">Rules</a>
+          <a href="help.html">Help</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a class="button button-small button-ghost" href="https://github.com/your-org/legacyless/releases/latest">Download Beta</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Safe, deterministic C++ modernization</p>
+            <h1>Modernize C++ without losing trust.</h1>
+            <p class="lead">
+              Legacyless is a C++ CLI tool for conservative code modernization. It focuses on safe transformations,
+              deterministic behavior, and edits that are easy to review, explain, and adopt in real codebases.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://github.com/your-org/legacyless/releases/latest">Download Beta</a>
+              <a class="button button-secondary" href="rules.html">View Rules</a>
+            </div>
+            <p class="hero-note">
+              Preview before apply. Keep the ruleset tight. Build confidence one explainable change at a time.
+            </p>
+          </div>
+
+          <aside class="hero-panel code-window" aria-label="Legacyless preview example">
+            <div class="window-bar">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-title">preview.diff</span>
+            </div>
+            <div class="panel-stack">
+              <div class="terminal-snippet">
+                <span class="prompt">$</span>
+                <code>legacyless preview --rule nullptr --compdb build/compile_commands.json</code>
+              </div>
+              <pre><code><span class="diff-line meta">Rule: nullptr modernization</span>
+<span class="diff-line remove">- Widget* ptr = NULL;</span>
+<span class="diff-line add">+ Widget* ptr = nullptr;</span>
+
+<span class="diff-line meta">Reason</span>
+<span class="diff-line plain">  Null pointer constant used in pointer context.</span>
+<span class="diff-line plain">  Replacement is deterministic and reviewable.</span></code></pre>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="signal-grid">
+            <article class="signal-card">
+              <p class="signal-title">Safe by design</p>
+              <p>Legacyless keeps the ruleset intentionally conservative and focuses on transformations it can justify.</p>
+            </article>
+            <article class="signal-card">
+              <p class="signal-title">Deterministic output</p>
+              <p>The same inputs should lead to the same edits, so teams can reason about adoption and review with confidence.</p>
+            </article>
+            <article class="signal-card">
+              <p class="signal-title">Explainable edits</p>
+              <p>Changes are small, targeted, and easy to inspect in code review instead of hidden behind broad rewrites.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Why teams care</p>
+            <h2>A developer tool built around confidence, not surprise.</h2>
+            <p>
+              Modernization is only useful when developers trust the process. Legacyless is designed to make each edit
+              understandable enough to review quickly and reliable enough to repeat across a codebase.
+            </p>
+          </div>
+
+          <div class="card-grid card-grid-three">
+            <article class="card feature-card">
+              <h3>Minimal surface area</h3>
+              <p>
+                The current rules focus on high-signal modernizations such as replacing null pointer constants and
+                adding missing <code>override</code> where it is already semantically implied.
+              </p>
+            </article>
+            <article class="card feature-card">
+              <h3>Preview before apply</h3>
+              <p>
+                Teams can inspect proposed edits first, decide where the tool fits, and apply changes only when the
+                output matches expectations.
+              </p>
+            </article>
+            <article class="card feature-card">
+              <h3>Built for real workflows</h3>
+              <p>
+                The product includes a CLI today, a VS Code extension for editor-centric workflows, and an ongoing
+                testing effort to keep rule quality disciplined as the ruleset grows.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Current rules</p>
+            <h2>A focused ruleset with practical early wins.</h2>
+            <p>
+              Legacyless is intentionally starting narrow. Each rule is meant to be human-friendly, easy to audit, and
+              strong enough to earn a place in an automated modernization workflow.
+            </p>
+          </div>
+
+          <div class="card-grid card-grid-two">
+            <article class="card rule-teaser">
+              <div class="tag-row">
+                <span class="tag">Rule 01</span>
+                <span class="tag tag-subtle">nullptr modernization</span>
+              </div>
+              <h3>Replace legacy null pointer constants</h3>
+              <p>
+                Converts <code>NULL</code> or literal <code>0</code> to <code>nullptr</code> when they are being used
+                as null pointer constants, improving clarity and matching modern C++ intent.
+              </p>
+              <div class="compare-grid">
+                <div class="code-card">
+                  <p class="code-label">Before</p>
+                  <pre><code>Socket* socket = NULL;
+connect(socket, 0);</code></pre>
+                </div>
+                <div class="code-card">
+                  <p class="code-label">After</p>
+                  <pre><code>Socket* socket = nullptr;
+connect(socket, nullptr);</code></pre>
+                </div>
+              </div>
+              <a class="text-link" href="rules.html#nullptr-rule">See rule details</a>
+            </article>
+
+            <article class="card rule-teaser">
+              <div class="tag-row">
+                <span class="tag">Rule 02</span>
+                <span class="tag tag-subtle">missing override</span>
+              </div>
+              <h3>Add missing <code>override</code></h3>
+              <p>
+                Marks derived member functions with <code>override</code> when they are already overriding a virtual
+                base declaration, making intent explicit and strengthening compiler checking.
+              </p>
+              <div class="compare-grid">
+                <div class="code-card">
+                  <p class="code-label">Before</p>
+                  <pre><code>struct Derived : Base {
+  void render();
+};</code></pre>
+                </div>
+                <div class="code-card">
+                  <p class="code-label">After</p>
+                  <pre><code>struct Derived : Base {
+  void render() override;
+};</code></pre>
+                </div>
+              </div>
+              <a class="text-link" href="rules.html#override-rule">See rule details</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-grid">
+          <div>
+            <div class="section-head section-head-left">
+              <p class="eyebrow">How it works</p>
+              <h2>A simple workflow for careful modernization.</h2>
+            </div>
+
+            <div class="steps-grid">
+              <article class="step-card">
+                <span class="step-number">01</span>
+                <h3>Point Legacyless at your project</h3>
+                <p>Use your project checkout and compilation database so the tool can understand real build context.</p>
+              </article>
+              <article class="step-card">
+                <span class="step-number">02</span>
+                <h3>Preview a specific rule</h3>
+                <p>Inspect proposed edits first, review the diffs, and confirm the transformation matches your standards.</p>
+              </article>
+              <article class="step-card">
+                <span class="step-number">03</span>
+                <h3>Apply once the output looks right</h3>
+                <p>Keep adoption incremental by enabling changes only when the preview is clear and acceptable.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="card aside-card">
+            <p class="eyebrow">Product direction</p>
+            <h3>More than a one-off utility</h3>
+            <p>
+              Legacyless is being shaped as a serious modernization product: a CLI for repeatable execution, a VS Code
+              extension for tighter editor workflows, and a testing effort meant to raise the bar for every rule before
+              it ships.
+            </p>
+            <p>
+              Commercial licensing is part of the long-term plan, but the current focus is straightforward: earn trust
+              through quality, clarity, and feedback from real users.
+            </p>
+            <a class="button button-secondary button-block" href="help.html">Read the beta workflow</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <p class="eyebrow">Early beta</p>
+              <h2>Try Legacyless and help shape the ruleset.</h2>
+              <p>
+                If you care about careful C++ modernization, the most useful next step is to run the beta on real code,
+                inspect the output, and send feedback on what feels solid and what still needs work.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="button button-primary" href="https://github.com/your-org/legacyless/releases/latest">Download Beta</a>
+              <a class="button button-secondary" href="contact.html">Send Feedback</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand brand-footer" href="index.html">
+            <span class="brand-mark">L</span>
+            <span>Legacyless</span>
+          </a>
+          <p class="footer-note">
+            Safe, deterministic, explainable C++ modernization for teams that want modern code without opaque rewrites.
+          </p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="rules.html">Rules</a>
+          <a href="help.html">Help</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-links">
+          <a href="https://github.com/your-org/legacyless/releases/latest">Beta download</a>
+          <a href="https://github.com/your-org/legacyless/issues">Issue tracker</a>
+          <a href="mailto:beta@legacyless.dev">beta@legacyless.dev</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
