@@ -330,17 +330,6 @@ p {
   padding: 16px 18px 0;
 }
 
-.terminal-bar span {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #303030;
-}
-
-.terminal-bar span:first-child {
-  background: var(--accent);
-}
-
 pre {
   margin: 0;
   padding: 24px;
@@ -373,8 +362,19 @@ pre {
   align-items: end;
   justify-content: space-between;
   gap: 16px;
-  max-width: none;
+  max-width: 960px;
+  margin: 0 auto 24px;
   text-align: left;
+}
+
+.card-grid,
+.example-stack,
+.tabs-shell,
+.stack-grid,
+.contact-grid {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .text-link {
