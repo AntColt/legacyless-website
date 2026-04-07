@@ -192,6 +192,55 @@ pre {
   opacity: 0.9;
 }
 
+.hero-terminal {
+  position: relative;
+}
+
+.terminal-bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.terminal-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: #3a3a3a;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.terminal-dot.is-active {
+  background: #ff7a00;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.terminal-slides {
+  position: relative;
+  min-height: 320px;
+}
+
+.terminal-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.terminal-slide.is-active {
+  display: block;
+}
+
+.terminal-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
 .page-hero {
   padding: 72px 0 28px;
 }

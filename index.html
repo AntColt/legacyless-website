@@ -35,45 +35,65 @@
     </header>
 
     <main>
-      <section class="hero section">
-        <div class="container hero-wrap">
-          <p class="eyebrow">Safe C++ modernization</p>
-          <h1>Modernize C++ without breaking your code.</h1>
-          <p class="hero-copy">
-            Legacyless upgrades outdated C++ constructs with deterministic, provably safe transformations.
-          </p>
-          <p class="hero-subcopy">
-            No AI-generated edits. No risky refactors. Only reviewable changes.
-          </p>
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot is-active" data-dot="0"></span>
+          <span class="terminal-dot" data-dot="1"></span>
+          <span class="terminal-dot" data-dot="2"></span>
+        </div>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="contact.html">Request Beta Access</a>
-            <a class="button button-secondary" href="rules.html">View Rules</a>
-          </div>
+        <div class="terminal-slides">
+          <div class="terminal-slide is-active" data-slide="0">
+            <pre><code><span class="code-dim">$ legacyless preview .</span>
 
-          <div class="hero-panel">
-            <div class="hero-terminal">
-              <div class="terminal-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <pre><code><span class="code-dim">$ legacyless preview .</span>
+Legacyless Preview Workspace
+============================
+Status: PREVIEW FOUND CHANGES
+Files scanned: 42
+Diagnostics: 0
+Planned edits: 19
 
 Rule results:
-- override     9 edits
-- nullptr      10 edits
+- nullptr: 10 edits
+- override: 9 edits
 
-Patch preview:
-<span class="code-remove">- void f();</span>
-<span class="code-add">+ void f() override;</span>
-
+Patch preview for: src/render_pipeline.cpp
 <span class="code-remove">- Widget* ptr = NULL;</span>
 <span class="code-add">+ Widget* ptr = nullptr;</span></code></pre>
-            </div>
+          </div>
+
+          <div class="terminal-slide" data-slide="1">
+            <pre><code><span class="code-dim">$ legacyless apply src/render_pipeline.cpp --report-json</span>
+
+Legacyless Apply Current File
+=============================
+Status: APPLY SUCCESS
+File: src/render_pipeline.cpp
+Diagnostics: 0
+Applied edits: 4
+Verification: clean
+
+Rule results:
+- override: 3 edits
+- nullptr: 1 edit
+
+JSON report used for summary output.</code></pre>
+          </div>
+
+          <div class="terminal-slide" data-slide="2">
+            <pre><code><span class="code-dim">// deterministic, reviewable diff</span>
+struct Renderer : BaseRenderer {
+<span class="code-remove">-   void flush();</span>
+<span class="code-add">+   void flush() override;</span>
+};
+
+<span class="code-remove">- Connection* current = NULL;</span>
+<span class="code-add">+ Connection* current = nullptr;</span>
+
+<span class="code-dim">// same input -> same output</span></code></pre>
           </div>
         </div>
-      </section>
+      </div>
 
       <section class="section">
         <div class="container">
@@ -286,6 +306,8 @@ use(ptr, nullptr);</code></pre>
       </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
