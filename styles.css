@@ -193,7 +193,13 @@ pre {
 }
 
 .hero-terminal {
-  position: relative;
+  max-width: 640px;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .hero-terminal pre {
@@ -229,17 +235,11 @@ pre {
 }
 
 .terminal-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
+  display: none;
 }
 
 .terminal-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  position: relative;
+  display: block;
 }
 
 .terminal-slide.is-active {
