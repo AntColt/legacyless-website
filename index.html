@@ -35,6 +35,22 @@
     </header>
 
     <main>
+  <section class="hero section">
+    <div class="container hero-wrap">
+      <p class="eyebrow">Safe C++ modernization</p>
+      <h1>Modernize C++ without breaking your code.</h1>
+      <p class="hero-copy">
+        Legacyless upgrades outdated C++ constructs with deterministic, provably safe transformations.
+      </p>
+      <p class="hero-subcopy">
+        No AI-generated edits. No risky refactors. Only reviewable changes.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="contact.html">Request Beta Access</a>
+        <a class="button button-secondary" href="rules.html">View Rules</a>
+      </div>
+
       <div class="hero-terminal">
         <div class="terminal-bar">
           <span class="terminal-dot" data-dot="0"></span>
@@ -43,7 +59,7 @@
         </div>
 
         <div class="terminal-slides">
-          <div class="terminal-slide is-active" data-slide="0">
+          <div class="terminal-slide" data-slide="0">
             <pre><code><span class="code-dim">$ legacyless preview .</span>
 
 Legacyless Preview Workspace
@@ -62,7 +78,7 @@ Patch preview for: src/render_pipeline.cpp
 <span class="code-add">+ Widget* ptr = nullptr;</span></code></pre>
           </div>
 
-          <div class="terminal-slide" data-slide="1">
+          <div class="terminal-slide is-active" data-slide="1">
             <pre><code><span class="code-dim">$ legacyless apply src/render_pipeline.cpp --report-json</span>
 
 Legacyless Apply Current File
@@ -89,7 +105,6 @@ struct Renderer : BaseRenderer {
 
 <span class="code-remove">- Connection* current = NULL;</span>
 <span class="code-add">+ Connection* current = nullptr;</span>
-
 <span class="code-dim">// same input -> same output</span></code></pre>
           </div>
         </div>
