@@ -66,15 +66,9 @@ pre {
   min-height: 100vh;
 }
 
-/* .container {
-  width: var(--container);
-  margin: 0 auto;
-} */
-
 .container {
   width: var(--container);
   margin: 0 auto;
-  outline: 1px solid red;
 }
 
 .section {
