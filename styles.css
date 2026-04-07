@@ -186,6 +186,12 @@ pre {
   text-align: center;
 }
 
+.hero-subcopy {
+  margin-top: 0.75rem;
+  max-width: 40rem;
+  opacity: 0.9;
+}
+
 .page-hero {
   padding: 72px 0 28px;
 }
