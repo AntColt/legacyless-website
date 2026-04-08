@@ -230,21 +230,21 @@ pre {
 
 .terminal-slides {
   position: relative;
-  min-height: 320px;
+  height: 380px;
+  overflow: hidden;
 }
 
 .terminal-slide {
-  display: none;
-}
-
-.terminal-slide.is-active {
-  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
 .terminal-slide.is-active {
   opacity: 1;
   pointer-events: auto;
-  position: relative;
 }
 
 .page-hero {
